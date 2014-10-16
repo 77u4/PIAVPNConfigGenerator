@@ -90,7 +90,7 @@ $xml .=	'	</array>
 </form>
 <?php
 if(@$_GET['action'] == "make"){
-	echo '<textarea rows="10" cols="30">'.$url.'</textarea>';	
+	echo '<textarea rows="10" cols="30">'.$xml.'</textarea>';	
 }
 ?>
 </body>
