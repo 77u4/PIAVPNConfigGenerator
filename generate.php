@@ -5,16 +5,14 @@
   * Licensed under MIT License
 **/
 
-if(@$_GET['action'] == 'make'){
-//		header("Content-disposition: attachment; filename=privateinternetaccess.networkConnect");
-//		header("Content-type: application/xml");
+if(@$_GET['action'] == 'make' OR @$_GET['action'] == 'download'){
 
 //VARS
 
 //From Form
-$username = $_POST['username'];
-$password = $_POST['password'];
-$secret = $_POST['secret'];
+$username = @$_POST['username'];
+$password = @$_POST['password'];
+$secret   =	@$_POST['secret'];
 
 // PIA Server List
 $server = array("us-midwest.privateinternetaccess.com"=>"US Midwest", "us-east.privateinternetaccess.com"=>"US East", "us-texas.privateinternetaccess.com"=>"US Texas","us-west.privateinternetaccess.com"=>"US West", "us-california.privateinternetaccess.com"=>"US California", "us-seattle"=>"US Seattle", "us-florida.privateinternetaccess.com"=>"US Florida", "ca.privateinternetaccess.com"=>"Canada", "ca-toronto.privateinternetaccess.com"=>"CA Toronto", "uk-london.privateinternetaccess.com"=>"UK London", "uk-southampton.privateinternetaccess.com"=>"UK Southampton","swiss.privateinternetaccess.com"=>"Switzerland", "nl.privateinternetaccess.com"=>"Netherlands", "sweden.privateinternetaccess.com"=>"Sweden", "france.privateinternetaccess.com"=>"France", "germany.privateinternetaccess.com"=>"Germany", "romania.privateinternetaccess.com"=>"Romania", "hk.privateinternetaccess.com"=>"Hong Kong", "israel.privateinternetaccess.com"=>"Israel");
@@ -59,10 +57,18 @@ foreach($server as $url=>$name){
 				</dict>
 			</dict>';
 }
-$xml .=	'	</array>
+$xml .=	'
+	</array>
 	</dict>
 </dict>
 </plist>';
+}
+
+if($_GET['action'] == "download"){
+	header("Content-disposition: attachment; filename=privateinternetaccess.networkConnect");
+	header("Content-type: application/xml");
+	print urldecode($_POST['document']);
+	exit;
 }
 ?>
 <!Doctype html>
@@ -89,10 +95,5 @@ $xml .=	'	</array>
 <input type="submit" value="Generate">
 </div>
 </form>
-<?php
-if(@$_GET['action'] == "make"){
-	echo '<textarea rows="30" cols="100%">'.$xml.'</textarea>';	
-}
-?>
 </body>
 </html>
