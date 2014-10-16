@@ -1,6 +1,6 @@
 <?php
 /**
-  * privateinternetaccess.com VPN config generator for Mac OS X
+  * privateinternetaccess.com Mac OS X VPN config generator
   * Copyright (c) 2014 Jannis Hutt
   * Licensed under MIT License
 **/
@@ -29,7 +29,8 @@ $xml = '<?xml version="1.0" encoding="UTF-8"?>
 		<key>UserConfigs</key>
 		<array>';
 foreach($server as $url=>$name){
-	$xml .= '			<dict>
+	$xml .= '
+			<dict>
 				<key>EAP</key>
 				<dict/>
 				<key>IPSec</key>
@@ -90,7 +91,7 @@ $xml .=	'	</array>
 </form>
 <?php
 if(@$_GET['action'] == "make"){
-	echo '<textarea rows="10" cols="30">'.$xml.'</textarea>';	
+	echo '<textarea rows="30" cols="100%">'.$xml.'</textarea>';	
 }
 ?>
 </body>
