@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	font-family: sans-serif;
+}
+textarea{
+	font-family: monospace;
+}
+
+fieldset {
+	display: inline-block;
+	margin: 5px;
+}
+
+label {
+	display: block;
+	font-size: small;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+.footer, .push {
+	height: 4em;
+	margin-top: 5px;
+}
+
+small.subheading {
+	font-size: 0.5em;
+	padding: 0;
+}
+

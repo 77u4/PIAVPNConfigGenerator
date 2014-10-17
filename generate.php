@@ -58,7 +58,7 @@ foreach($server as $url=>$name){
 			</dict>';
 }
 $xml .=	'
-	</array>
+	   </array>
 	</dict>
 </dict>
 </plist>';
@@ -67,33 +67,55 @@ $xml .=	'
 if($_GET['action'] == "download"){
 	header("Content-disposition: attachment; filename=privateinternetaccess.networkConnect");
 	header("Content-type: application/xml");
-	print urldecode($_POST['document']);
+	print $xml;
 	exit;
 }
-?>
-<!Doctype html>
+?><!Doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>privateinternetaccess.com VPN config generator for Mac OS X</title>
+	<title>privateinternetaccess.com Mac OS X VPN config generator</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>?action=make" method="post" name="data">
-<div class="row requiredRow">
-	<label for="username" id="Username-ariaLabel">Username</label>
-	<input id="username" name="username" type="text" aria-labelledby="Username-ariaLabel" class="required" title="Username. This is a required field">
+<div class="wrapper">
+		<h1>VPN config Wizard<br/><small class="subheading">Generate Mac OS X VPN configuration file for privateinternetaccess.com customers</small></h1>
+		<fieldset name="Generator">
+		  <legend>Login Credentials</legend>
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>?action=make" method="post" name="data">
+		<div class="row requiredRow">
+			<label for="username" id="Username-ariaLabel">Username</label>
+			<input id="username" name="username" type="text" class="required" title="Username. This is a required field">
+		</div>
+		<div class="row requiredRow">
+			<label for="password" id="Password-ariaLabel">Password</label>
+			<input id="password" name="password" type="text" class="required" title="Password. This is a required field">
+		</div>
+		<div class="row">
+			<label for="secret" id="Secret-ariaLabel">Shared Secret</label>
+			<input id="secret" value="mysafety" name="secret" type="text" class="required" title="Secret. This is a required field">
+		</div>
+		<div class="row" style="margin: 5px;">
+			<input type="submit" value="Generate">
+		</div>
+	</form>
+		<small>Your credentials are not going to be sent anywhere except this script file.<br/>
+		Check the code if you have security concerns.</small>
+	</fieldset>
+	<?php
+	if(@$_GET['action'] == "make"){
+		echo '<br/><textarea rows="30" cols="100%">'.$xml.'</textarea>';	
+		echo '<br/><form method ="post" action="'.$_SERVER['PHP_SELF'].'?action=download">
+		<input type="hidden" id="username" value="'.$username.'">
+		<input type="hidden" id="password" value="'.$password.'">
+		<input type="hidden" id="secret" value="'.$secret.'">
+		<input type="submit" value="Download"></form>';
+	}
+	?>
+	<div class="push"></div>
 </div>
-<div class="row requiredRow">
-	<label for="password" id="Password-ariaLabel">Password</label>
-	<input id="password" name="password" type="text" aria-labelledby="Password-ariaLabel" class="required" title="Password. This is a required field">
+<div class="footer">
+	<p>Copyright &copy; 2014 Jannis Hutt &middot; Licensed under MIT License &middot; <a title="Project on GitHub" href="https://github.com/77u4/PIAVPNConfigGenerator">Project on GitHub</a></p>
 </div>
-<div class="row requiredRow">
-	<label for="secret" id="Secret-ariaLabel">Shared Secret</label>
-	<input id="secret" value="mysafety" name="secret" type="text" aria-labelledby="Secret-ariaLabel" class="required" title="Secret. This is a required field">
-</div>
-<div class="row">
-<input type="submit" value="Generate">
-</div>
-</form>
 </body>
 </html>
