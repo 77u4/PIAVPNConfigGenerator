@@ -14,6 +14,10 @@ $username = @$_POST['username'];
 $password = @$_POST['password'];
 $secret   =	@$_POST['secret'];
 
+//Encryption of $password and $secret
+
+//I have no clue how this should work.
+
 // PIA Server List
 $server = array("us-midwest.privateinternetaccess.com"=>"US Midwest", "us-east.privateinternetaccess.com"=>"US East", "us-texas.privateinternetaccess.com"=>"US Texas","us-west.privateinternetaccess.com"=>"US West", "us-california.privateinternetaccess.com"=>"US California", "us-seattle"=>"US Seattle", "us-florida.privateinternetaccess.com"=>"US Florida", "ca.privateinternetaccess.com"=>"Canada", "ca-toronto.privateinternetaccess.com"=>"CA Toronto", "uk-london.privateinternetaccess.com"=>"UK London", "uk-southampton.privateinternetaccess.com"=>"UK Southampton","swiss.privateinternetaccess.com"=>"Switzerland", "nl.privateinternetaccess.com"=>"Netherlands", "sweden.privateinternetaccess.com"=>"Sweden", "france.privateinternetaccess.com"=>"France", "germany.privateinternetaccess.com"=>"Germany", "romania.privateinternetaccess.com"=>"Romania", "hk.privateinternetaccess.com"=>"Hong Kong", "israel.privateinternetaccess.com"=>"Israel");
 
