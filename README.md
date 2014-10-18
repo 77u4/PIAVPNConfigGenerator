@@ -12,5 +12,6 @@ It's easy as 1-2-3 and ready to import!
 It is - afaik - compatible with Mac OS 10.5+.
 Already tested with 10.9 Mavericks and 10.10 Yosemite
 
+# Screenshot
 ![How the wizard looks like](wizard.png)
 (UI/UX is overrated in this case. Fork and make a pull request if you don't think so.)
