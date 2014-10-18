@@ -88,16 +88,16 @@ if($_GET['action'] == "download"){
 		  <legend>Login Credentials</legend>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>?action=make" method="post" name="data">
 		<div class="row requiredRow">
-			<label for="username" id="Username-ariaLabel">Username</label>
-			<input id="username" name="username" type="text" class="required" title="Username. This is a required field">
+			<label for="username">Username</label>
+			<input id="username" name="username" type="text" class="required" value="<?php if(isset($_GET['action'])) echo $username; ?>" title="Username. This is a required field">
 		</div>
 		<div class="row requiredRow">
 			<label for="password" id="Password-ariaLabel">Password</label>
-			<input id="password" name="password" type="text" class="required" title="Password. This is a required field">
+			<input id="password" name="password" type="text" class="required" value="<?php if(isset($_GET['action'])) echo $password; ?>" title="Password. This is a required field">
 		</div>
 		<div class="row">
 			<label for="secret" id="Secret-ariaLabel">Shared Secret</label>
-			<input id="secret" value="mysafety" name="secret" type="text" class="required" title="Secret. This is a required field">
+			<input id="secret" value="mysafety" name="secret" type="text" class="required" value="<?php if(isset($_GET['action'])) echo $secret; ?>" title="Secret. This is a required field">
 		</div>
 		<div class="row" style="margin: 5px;">
 			<input type="submit" value="Generate">
@@ -108,12 +108,14 @@ if($_GET['action'] == "download"){
 	</fieldset>
 	<?php
 	if(@$_GET['action'] == "make"){
-		echo '<br/><textarea rows="30" cols="100%">'.$xml.'</textarea>';	
+		echo '<br/><textarea rows="20" cols="100">'.$xml.'</textarea>';	
 		echo '<br/><form method ="post" action="'.$_SERVER['PHP_SELF'].'?action=download">
-		<input type="hidden" id="username" value="'.$username.'">
-		<input type="hidden" id="password" value="'.$password.'">
-		<input type="hidden" id="secret" value="'.$secret.'">
-		<input type="submit" value="Download"></form>';
+			<input type="hidden" id="username" value="'.$username.'">
+			<input type="hidden" id="password" value="'.$password.'">
+			<input type="hidden" id="secret" value="'.$secret.'">
+			<label for="dl" style="margin-left: 6px;">download as file (ready to import)</label>
+			<input type="submit" value="Download" id="dl" style="margin: 5px;">
+		</form>';
 	}
 	?>
 	<div class="push"></div>

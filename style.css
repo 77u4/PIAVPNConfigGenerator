@@ -8,6 +8,7 @@ html, body {
 }
 textarea{
 	font-family: monospace;
+	margin: 2px;
 }
 
 fieldset {
