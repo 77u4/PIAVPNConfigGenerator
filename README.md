@@ -15,3 +15,6 @@ Already tested with 10.9 Mavericks and 10.10 Yosemite
 # Screenshot
 ![How the wizard looks like](wizard.png)
 (UI/UX is overrated in this case. Fork and make a pull request if you don't think so.)
+
+# Future
+If I stay motivated I might implement other VPN services's configurations.
