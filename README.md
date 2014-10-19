@@ -18,3 +18,6 @@ Already tested with 10.9 Mavericks and 10.10 Yosemite
 
 # Future
 If I stay motivated I might implement other VPN services's configurations.
+
+# Known Issues
+I'm currently unable to implement Apple's encryption algorithm, therefore you have to export a VPN config with your credentials, extract them and use the already encrypted shared secret and password in my generation wizard.
